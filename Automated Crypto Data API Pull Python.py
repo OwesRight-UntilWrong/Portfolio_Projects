@@ -32,9 +32,12 @@ def api_runner():
 
     import pandas as pd
 
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.max_rows', None)
+
     #converting json data into table for easier viewing
     df = pd.json_normalize(data['data'])
-    df['timestamp'] = pd.to_datetime('now')
+    df['timestamp_myt'] = pd.to_datetime('now').tz_localize('Asia/Kuala_Lumpur')
 
     #print(df)
 
@@ -57,6 +60,6 @@ from time import sleep
 for i in range(333):
     api_runner()
     print('This API pull is successfully completed!')
-    sleep(5)  #repeats every 30 seconds
+    sleep(5)  #repeats every 600 seconds/10 mins
 exit()
 
