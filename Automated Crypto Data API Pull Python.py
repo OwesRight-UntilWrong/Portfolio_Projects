@@ -37,6 +37,8 @@ def api_runner():
 
     #converting json data into table for easier viewing
     df = pd.json_normalize(data['data'])
+
+    #localize datatime to UTC+8 (Malaysia Time) 
     df['timestamp_myt'] = pd.to_datetime('now').tz_localize('Asia/Kuala_Lumpur')
 
     #print(df)
@@ -60,6 +62,6 @@ from time import sleep
 for i in range(333):
     api_runner()
     print('This API pull is successfully completed!')
-    sleep(5)  #repeats every 600 seconds/10 mins
+    sleep(600)  #repeats every 600 seconds/10 mins
 exit()
 
